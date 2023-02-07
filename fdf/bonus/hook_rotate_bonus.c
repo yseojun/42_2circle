@@ -6,7 +6,7 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 21:23:17 by seojyang          #+#    #+#             */
-/*   Updated: 2023/02/07 22:42:37 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/02/07 23:03:39 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,10 @@ void	reset_min_max(t_map *map, t_draw **draw)
 	map->y_max = draw[0][0].y;
 	map->y_min = draw[0][0].y;
 	height = 0;
-	while (height <= map->height)
+	while (height < map->height)
 	{
 		width = 0;
-		while (width <= map->width)
+		while (width < map->width)
 		{
 			update_size(map, draw[height][width].y, draw[height][width].x);
 			width++;

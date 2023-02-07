@@ -6,7 +6,7 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 20:54:28 by seojyang          #+#    #+#             */
-/*   Updated: 2023/02/07 22:34:22 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/02/07 22:54:08 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ void	_zoom(t_map *map, t_draw **draw, int keycode)
 	map->magnitude *= 1 + in_or_out;
 }
 
+#include <stdio.h>
+
 void	_refresh(t_map *map, t_draw **draw)
 {
 	int		height;
@@ -77,6 +79,7 @@ void	_refresh(t_map *map, t_draw **draw)
 
 	height = 0;
 	reset_min_max(map, draw);
+	printf("%d %d %d %d\n", map->x_min, map->x_max, map->y_min, map->y_max);
 	while (height < map->height)
 	{
 		width = 0;

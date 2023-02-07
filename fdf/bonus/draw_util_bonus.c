@@ -6,7 +6,7 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 21:01:07 by seojyang          #+#    #+#             */
-/*   Updated: 2023/02/06 19:57:28 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/02/07 23:16:03 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,16 @@ void	gradually(t_drline *drline, t_draw *from)
 {
 	from->x += drline->dx / drline->add;
 	from->y += drline->dy / drline->add;
+}
+
+int	value_to_color(t_map *map, int height, int width)
+{
+	int	r;
+	int	g;
+	int	b;
+
+	r = 255;
+	g = (map->max - map->value[height][width]) / (map->max - map->min) * 255;
+	b = (map->max - map->value[height][width]) / (map->max - map->min) * 255;
+	return ((r << 16) + (g << 8) + b);
 }
