@@ -6,7 +6,7 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 19:53:38 by seojyang          #+#    #+#             */
-/*   Updated: 2023/02/07 23:15:34 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/02/09 14:41:11 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void	cal_draw(t_map *map, t_draw **draw)
 		while (width < map->width)
 		{
 			draw[height][width].x = (width - height) * cos(map->degree);
-			draw[height][width].y = ((width + height) * sin(map->degree)
-					- map->value[height][width] / map->max);
+			draw[height][width].y = (width + height) * sin(map->degree)
+				- map->value[height][width];
 			if (map->is_color == 0)
 				draw[height][width].color = value_to_color(map, height, width);
 			width++;

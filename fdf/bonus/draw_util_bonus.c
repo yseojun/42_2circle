@@ -6,7 +6,7 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 21:01:07 by seojyang          #+#    #+#             */
-/*   Updated: 2023/02/07 23:16:03 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/02/09 13:55:03 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,13 @@ int	value_to_color(t_map *map, int height, int width)
 	int	r;
 	int	g;
 	int	b;
+	int	range;
 
+	range = map->max - map->min;
+	if (range == 0)
+		return (0x00ffffff);
 	r = 255;
-	g = (map->max - map->value[height][width]) / (map->max - map->min) * 255;
-	b = (map->max - map->value[height][width]) / (map->max - map->min) * 255;
+	g = (map->max - map->value[height][width]) / range * 255;
+	b = (map->max - map->value[height][width]) / range * 255;
 	return ((r << 16) + (g << 8) + b);
 }

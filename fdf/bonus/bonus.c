@@ -6,7 +6,7 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 18:07:09 by seojyang          #+#    #+#             */
-/*   Updated: 2023/02/07 22:20:26 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/02/09 14:52:52 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,13 +75,15 @@ int	key_hook(int keycode, t_map *map)
 void	check_av(char **av)
 {
 	char	**name;
+	int		fd;
 	int		idx;
 
 	idx = 0;
+	fd = open(av[1], O_RDONLY);
 	name = ft_split(av[1], '.');
 	while (name[idx])
 		idx++;
-	if (ft_strncmp(name[idx - 1], "fdf", 4) != 0)
+	if (fd < 0 || ft_strncmp(name[idx - 1], "fdf", 4) != 0)
 	{
 		ft_putendl_fd("Wrong file", 2);
 		exit(1);
@@ -93,4 +95,12 @@ int	exit_cross(void)
 {
 	exit(0);
 	return (0);
+}
+
+void	wrong_exit(char *msg)
+{
+	ft_putstr_fd("Wrong ", 2);
+	if (msg)
+		ft_putendl_fd(msg, 2);
+	exit(1);
 }

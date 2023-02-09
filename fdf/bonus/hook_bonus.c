@@ -6,7 +6,7 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 20:54:28 by seojyang          #+#    #+#             */
-/*   Updated: 2023/02/07 22:54:08 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/02/09 14:21:44 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,6 @@ void	_zoom(t_map *map, t_draw **draw, int keycode)
 	map->magnitude *= 1 + in_or_out;
 }
 
-#include <stdio.h>
-
 void	_refresh(t_map *map, t_draw **draw)
 {
 	int		height;
@@ -79,7 +77,6 @@ void	_refresh(t_map *map, t_draw **draw)
 
 	height = 0;
 	reset_min_max(map, draw);
-	printf("%d %d %d %d\n", map->x_min, map->x_max, map->y_min, map->y_max);
 	while (height < map->height)
 	{
 		width = 0;
@@ -111,9 +108,9 @@ void	_rotate(t_map *map, t_draw **draw, t_point **point)
 			set_point(map, &point[height][width], height, width);
 			draw[height][width].x = cos(map->degree) * map->magnitude
 				* (point[height][width].x - point[height][width].y);
-			draw[height][width].y = sin(map->degree) * map->magnitude
-				* (point[height][width].x + point[height][width].y)
-				- point[height][width].z;
+			draw[height][width].y = (sin(map->degree)
+					* (point[height][width].x + point[height][width].y)
+					- point[height][width].z) * map->magnitude;
 			width++;
 		}
 		height++;

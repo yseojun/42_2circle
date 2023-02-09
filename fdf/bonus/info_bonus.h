@@ -6,7 +6,7 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 17:52:37 by seojyang          #+#    #+#             */
-/*   Updated: 2023/02/07 22:07:29 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/02/09 14:21:03 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,9 @@ int		value_to_color(t_map *map, int height, int width);
 void	parse_map(t_map *map, char *infile);
 void	parse_value(t_map *map, char *infile);
 void	parse_value_one_line(t_map *map, char **line_spl, int height);
-void	wrong_exit(char *msg);
+void	map_min_max_update(t_map *map, int height, int width, int value);
 void	get_width(t_map *map, char **line_spl);
+
+void	wrong_exit(char *msg);
 
 #endif

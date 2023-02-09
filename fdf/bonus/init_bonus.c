@@ -6,7 +6,7 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 15:43:08 by seojyang          #+#    #+#             */
-/*   Updated: 2023/02/07 23:06:34 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/02/09 14:10:09 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,12 @@ void	init_map(t_map *map)
 	map->is_color = 0;
 	map->magnitude = 0;
 	map->degree = M_PI / 6;
-	map->max = 1;
-	map->min = 1;
 	map->x_max = 0;
 	map->x_min = 0;
 	map->y_max = 0;
 	map->y_min = 0;
-	map->x_degree = -M_PI / 40;
-	map->y_degree = M_PI / 40;
+	map->x_degree = 0;
+	map->y_degree = 0;
 	map->z_degree = 0;
 	map->x_move = 0;
 	map->y_move = 0;

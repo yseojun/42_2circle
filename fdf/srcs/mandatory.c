@@ -6,7 +6,7 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 18:07:09 by seojyang          #+#    #+#             */
-/*   Updated: 2023/02/07 17:02:18 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/02/09 13:52:28 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int	main(int ac, char **av)
 	mlx_put_image_to_window(map.mlx.mlx, map.mlx.win, map.img.img, 0, 0);
 	mlx_hook(map.mlx.win, 2, 0, key_hook, &map);
 	mlx_hook(map.mlx.win, 17, 0, exit_cross, 0);
+	// printf("%d, %d\n", map.max, map.min);
 	mlx_loop(map.mlx.mlx);
 }
 
@@ -56,13 +57,15 @@ int	key_hook(int keycode, t_map *map)
 void	check_av(char **av)
 {
 	char	**name;
+	int		fd;
 	int		idx;
 
 	idx = 0;
+	fd = open(av[1], O_RDONLY);
 	name = ft_split(av[1], '.');
 	while (name[idx])
 		idx++;
-	if (ft_strncmp(name[idx - 1], "fdf", 4) != 0)
+	if (fd < 0 || ft_strncmp(name[idx - 1], "fdf", 4) != 0)
 	{
 		ft_putendl_fd("Wrong file", 2);
 		exit(1);

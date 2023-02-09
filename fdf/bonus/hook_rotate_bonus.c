@@ -6,7 +6,7 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 21:23:17 by seojyang          #+#    #+#             */
-/*   Updated: 2023/02/07 23:03:39 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/02/09 15:04:05 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	change_degree(t_map *map, int keycode)
 
 void	conic_projection(t_map *map, t_draw **draw)
 {
+	map->degree = 0;
 	map->x_degree = 0;
 	map->y_degree = 0;
 	map->z_degree = M_PI / 4;

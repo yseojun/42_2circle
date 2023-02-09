@@ -6,7 +6,7 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 19:53:38 by seojyang          #+#    #+#             */
-/*   Updated: 2023/02/07 22:13:26 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/02/09 14:40:24 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	cal_draw(t_map *map, t_draw **draw)
 {
-	int		height;
-	int		width;
+	int	height;
+	int	width;
 
 	height = 0;
 	while (height < map->height)
@@ -24,8 +24,8 @@ void	cal_draw(t_map *map, t_draw **draw)
 		while (width < map->width)
 		{
 			draw[height][width].x = (width - height) * cos(map->degree);
-			draw[height][width].y = ((width + height) * sin(map->degree)
-					- map->value[height][width] / map->max);
+			draw[height][width].y = (width + height) * sin(map->degree)
+				- map->value[height][width];
 			if (map->is_color == 0)
 				draw[height][width].color = value_to_color(map, height, width);
 			update_size(map, draw[height][width].y, draw[height][width].x);
@@ -89,9 +89,13 @@ int	value_to_color(t_map *map, int height, int width)
 	int	r;
 	int	g;
 	int	b;
+	int	range;
 
+	range = map->max - map->min;
+	if (range == 0)
+		return (0x00ffffff);
 	r = 255;
-	g = (map->max - map->value[height][width]) / (map->max - map->min) * 255;
-	b = (map->max - map->value[height][width]) / (map->max - map->min) * 255;
+	g = (map->max - map->value[height][width]) / range * 255;
+	b = (map->max - map->value[height][width]) / range * 255;
 	return ((r << 16) + (g << 8) + b);
 }

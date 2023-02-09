@@ -6,7 +6,7 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 19:36:21 by seojyang          #+#    #+#             */
-/*   Updated: 2023/02/07 22:18:53 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/02/09 13:48:16 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,20 +104,21 @@ void	parse_value_one_line(t_map *map, char **line_spl, int height)
 			map->draw[height][width].color = atohex(val_clr[1]);
 			map->is_color = 1;
 		}
-		map->value[height][width] = value;
-		if (value > map->max)
-			map->max = value;
-		if (value < map->min)
-			map->min = value;
-		width++;
+		map->value[height][width++] = value;
+		map_min_max_update(map, height, width, value);
 		free_arr((void *)val_clr);
 	}
 }
 
-void	wrong_exit(char *msg)
+void	map_min_max_update(t_map *map, int height, int width, int value)
 {
-	ft_putstr_fd("Wrong ", 2);
-	if (msg)
-		ft_putendl_fd(msg, 2);
-	exit(1);
+	if (height == 0 && width == 0)
+	{
+		map->max = value;
+		map->min = value;
+	}
+	if (value > map->max)
+		map->max = value;
+	if (value < map->min)
+		map->min = value;
 }
