@@ -6,7 +6,7 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 19:36:21 by seojyang          #+#    #+#             */
-/*   Updated: 2023/02/09 13:48:16 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/02/09 15:17:16 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,8 +104,8 @@ void	parse_value_one_line(t_map *map, char **line_spl, int height)
 			map->draw[height][width].color = atohex(val_clr[1]);
 			map->is_color = 1;
 		}
-		map->value[height][width++] = value;
 		map_min_max_update(map, height, width, value);
+		map->value[height][width++] = value;
 		free_arr((void *)val_clr);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 19:06:16 by seojyang          #+#    #+#             */
-/*   Updated: 2023/02/09 13:33:48 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/02/09 15:07:39 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,12 +105,4 @@ int	atohex(char *str)
 		idx++;
 	}
 	return (ans);
-}
-
-void	wrong_exit(char *msg)
-{
-	ft_putstr_fd("Wrong ", 2);
-	if (msg)
-		ft_putendl_fd(msg, 2);
-	exit(1);
 }

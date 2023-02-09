@@ -6,7 +6,7 @@
 /*   By: seojyang <seojyang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 18:07:09 by seojyang          #+#    #+#             */
-/*   Updated: 2023/02/09 13:52:28 by seojyang         ###   ########.fr       */
+/*   Updated: 2023/02/09 15:23:15 by seojyang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ int	main(int ac, char **av)
 	mlx_put_image_to_window(map.mlx.mlx, map.mlx.win, map.img.img, 0, 0);
 	mlx_hook(map.mlx.win, 2, 0, key_hook, &map);
 	mlx_hook(map.mlx.win, 17, 0, exit_cross, 0);
-	// printf("%d, %d\n", map.max, map.min);
 	mlx_loop(map.mlx.mlx);
 }
 
@@ -77,4 +76,12 @@ int	exit_cross(void)
 {
 	exit(0);
 	return (0);
+}
+
+void	wrong_exit(char *msg)
+{
+	ft_putstr_fd("Wrong ", 2);
+	if (msg)
+		ft_putendl_fd(msg, 2);
+	exit(1);
 }
